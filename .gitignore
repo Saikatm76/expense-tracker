@@ -1,0 +1,26 @@
+# Node module folders (redundant if using service-level ignores, but safe)
+node_modules/
+**/node_modules/
+
+# Docker build artifacts
+*.log
+*.pid
+*.seed
+*.swp
+.DS_Store
+
+# Docker Compose volumes (if you ever use named volumes)
+docker-volume/
+
+# Ignore editor/OS artifacts
+.vscode/
+.env
+.env.local
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore system files
+Thumbs.db
+*.bak
+*.tmp
