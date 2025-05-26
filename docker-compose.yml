@@ -1,0 +1,22 @@
+version: "3.9" # Use a recent Compose file version
+
+services:
+  frontend:
+    build: ./frontend # Build from Dockerfile in 'frontend' directory
+    ports:
+      - "3000:3000" # Map local port 3000 to container's 3000 (React dev server)
+    volumes:
+      - ./frontend:/app # Mount app source code for hot reload
+      - /app/node_modules # Avoid node_modules conflict
+    stdin_open: true # Keeps STDIN open so container doesn't exit
+    tty: true # Allocate a pseudo-TTY (good for debugging)
+    depends_on:
+      - backend # Wait for backend to start first
+
+  backend:
+    build: ./backend # Build from Dockerfile in 'backend' directory
+    ports:
+      - "5000:5000" # Map local port 5000 to container's 5000 (Express server)
+    volumes:
+      - ./backend:/app # Mount source code
+      - /app/node_modules # Avoid node_modules being overwritten
